@@ -21,10 +21,43 @@ app.use('/images', (req, res) => {
     res.status(404).json({error:'Image not found'});
 });
 
+app.get('/lessons', async (req, res) => {
+const lessons = await db.collection('lesson').find({}).toArray();
+res.json(lessons);
+});
+
+app.post('/orders', async (req, res) =>{
+    const { name, phone, lessonIDs, spaces } = req.body;
+    const result = await db.collection('order').insertOne ({ name, phone, lessonIDs, spaces});
+    res.json({ message: 'Order saved', id: result.insertedId});
+});
+
+app.put('/lesson/:id', async (req, res) =>{
+    const result = await db.collection('lesson').updateOne(
+    {_id: new ObjectId(req.params.id)},
+    {$set: req.body}
+    );
+    res.json({ message: 'Lesson updated', modified: result.modifiedCount});
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 app.get('/', (req,res) =>{
     res.send('After School API is running');
 });
+
+require('dotenv').config();
+const { MongoClient, ObjectId } = require('mongodb');
+
+const client = new MongoClient('process.env.MONGO-URI');
+let Db;
+
+async function start() {
+    await client.connect();
+    db = client.db('afterschool');
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log ('Server running on port ${PORT}'));
+}
+start();
 
