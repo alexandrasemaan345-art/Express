@@ -58,3 +58,7 @@ Server running on port 3000
 2026-11-23T10:51:46.857Z -GET /search?q=mu
 2026-11-23T10:51:47.025Z -GET /search?q=m
 2026-11-23T10:51:47.207Z -GET /lessons
+2026-11-23T11:11:55.864Z -GET /lessons
+2026-11-23T11:11:55.865Z -GET /teachers
+2026-11-23T11:13:12.172Z -GET /lessons
+2026-11-23T11:13:12.175Z -GET /teachers

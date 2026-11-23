@@ -7,7 +7,7 @@ const { MongoClient, ObjectId } = require('mongodb');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// Enable Croos-Origin Resource Sharing for the frontend
 app.use(cors());
 app.use(express.json());
 
