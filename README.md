@@ -1,3 +1,3 @@
 # After School Club - Express API
-This is the backend for the After School Club coursework, built with Node.js, Express, and MongoDB.
-Status: In Development
+-[Express.js App] GitHub Repository: https://github.com/alexandrasemaan345-art/Express
+-[Express.js App] Render.com/lesson route: https://m00978480-afterschool.onrender.com/lessons
